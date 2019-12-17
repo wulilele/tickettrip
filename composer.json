@@ -1,6 +1,6 @@
 {
-  "name": "wulilele/jinjihu",
-  "description": "jinjihu restful api",
+  "name": "wulilele/tickettrip",
+  "description": "tickettrip restful api",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "wulilele\\jinjihu\\": "src/jinjihu"
+      "wulilele\\jinjihu\\": "src/tickettrip"
     }
   },
   "require": {
