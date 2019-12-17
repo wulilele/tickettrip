@@ -1,6 +1,6 @@
 {
   "name": "wulilele/tickettrip",
-  "description": "tickettrip restful api",
+  "description": "tickettrip api",
   "minimum-stability": "stable",
   "license": "MIT",
   "authors": [
