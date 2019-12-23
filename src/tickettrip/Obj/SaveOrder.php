@@ -9,6 +9,7 @@ namespace wulilele\tickettrip\Obj;
  */
 class SaveOrder extends TicketBase
 {
+
     /**
      * @param $name string 取票人姓名
      * @require true 必填字段

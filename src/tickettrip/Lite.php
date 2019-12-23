@@ -4,6 +4,7 @@ namespace wulilele\tickettrip;
 
 use Exception;
 use wulilele\tickettrip\Config;
+use wulilele\tickettrip\Obj\TicketBase;
 
 /**
  * 入口
@@ -42,11 +43,30 @@ class Lite
 
     /**
      * 云平台接口请求统一方法
-     * @param $object object 参数对象
+     * @param $object TicketBase 参数对象
      * @return array
      */
     public function request($object){
-        return [];
+        $url = Config::$APIURL . $object::$path;
+        $data = $object->getValues();
+        //加签
+        $data['sign'] = $this->createSign($data,Config::$KEY);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $headers = [
+            "Content-Type : application/json"
+        ];
+        if(!empty($options)){
+            $headers = array_merge($headers,$options);
+        }
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,$data);
+        $response = curl_exec($ch);
+        curl_close($ch);
+        return  $response;
     }
 
 
@@ -55,34 +75,55 @@ class Lite
      * @param array $params 请求参数
      * @param string $key 密钥
      */
-    public function verifySign($params = array(),$key){
+    public function verifySign($params, $key){
 
     }
 
     /**
      * 加签
-     * 传入请求参数生成带签名的请求参数
+     * 传入请求参数生，生成签名
      * @param array $params 请求参数
      * @param $key string 密钥
+     * @return string
      */
-    public function createSign($params = array(),$key){
-
+    public function createSign($params, $key){
+        $str = $this->createLinkString($this->paraFilter($params));
+        $str = md5(Config::$KEY . $str);
+        if($str != null){
+            $str = strtoupper($str);
+        }
+        return $str;
     }
 
     /**
      * 去除数组中的空值和签名参数sign
      * @param array $params 待签名的参数
+     * @return array
      */
     public function paraFilter($params = array()){
-
+        if($params == null || count($params) <= 0){
+            return $params;
+        }
+        foreach ($params as $key => $val){
+            if($val == null || $val == "" || $key == "sign"){
+                unset($params[$key]);
+            }
+        }
+        return $params;
     }
 
     /**
      * 把数组元素按照“参数参数值”拼接字符串
      * @param array $params 去除空值和签名参数sign的待签参数数组
+     * @return string
      */
     public function createLinkString($params = array()){
-
+        asort($params);
+        $str = "";
+        foreach ($params as $key => $val){
+            $str .= $key . $val;
+        }
+        return $str;
     }
 
 }

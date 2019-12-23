@@ -12,6 +12,8 @@ use wulilele\tickettrip\Config;
  */
 class TicketBase
 {
+    public static $path = "";//接口相对路径
+
     /**
      * @var array 参数数组
      * 以下为公共参数,会自动调取，不用传值
@@ -28,4 +30,13 @@ class TicketBase
         $this->values['timestamp'] = $currentTimestamp; //当前时间戳
         $this->values['password'] = md5(Config::$PASSWORD . $currentTimestamp); //加密密码
     }
+
+    /**
+     * @return array
+     */
+    public function getValues()
+    {
+        return $this->values;
+    }
+
 }
