@@ -9,6 +9,7 @@ namespace wulilele\tickettrip\Obj;
  */
 class SaveOrder extends TicketBase
 {
+    public static $path = "/ticketInterface/saveOrder.do";
 
     public function __construct()
     {

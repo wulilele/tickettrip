@@ -6,6 +6,9 @@ namespace wulilele\tickettrip\Obj;
 
 class GetOrderInfoByOrderNo extends TicketBase
 {
+
+    public static $path = "/ticketInterface/getOrderInfoByOrderNo.do";
+
     /**
      * @param $third_tid string 第三方订单号，（与订单号不能同时为空）
      */
