@@ -55,10 +55,9 @@ class Lite
 
         $url = Config::$APIURL . $object::$path;//接口完整路径
         $data = $object->getValues();//请求参数
-
-        //加签
-        $param['sign'] = $this->createSign($data,Config::$KEY);
         $param['data'] = json_encode($data);
+        //加签
+        $param['sign'] = $this->createSign($param,Config::$KEY);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
