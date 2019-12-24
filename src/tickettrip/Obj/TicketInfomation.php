@@ -10,11 +10,11 @@ namespace wulilele\tickettrip\Obj;
 class TicketInfomation
 {
 
-    protected $certificateParamList;//实名制信息
-    protected $orderTicketSum;  //购票数量
-    protected $ticketTypeNO;    //票种编号
-    protected $activityTimeNo;  //票种签约价格（当景区支持自定义价格且下单票种为区间价格票种时为必填参数）
-    protected $ticketPrice; //场次编号,剧场门票时必传
+    public $certificateParamList;//实名制信息
+    public $orderTicketSum;  //购票数量
+    public $ticketTypeNO;    //票种编号
+    public $activityTimeNo;  //票种签约价格（当景区支持自定义价格且下单票种为区间价格票种时为必填参数）
+    public $ticketPrice; //场次编号,剧场门票时必传
 
     /**
      * 实名制信息

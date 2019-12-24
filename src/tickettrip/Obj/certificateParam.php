@@ -9,9 +9,9 @@ namespace wulilele\tickettrip\Obj;
  */
 class certificateParam
 {
-    protected $holdTicketName;//持票人姓名（一票多客入园标志为“Y”时不能填）
-    protected $certificateNo;//证件号码（一票多客入园标志为“Y”时不能填）
-    protected $touristPhone;//持票人手机号码（一票多客入园标志为“Y”时不能填）
+    public $holdTicketName;//持票人姓名（一票多客入园标志为“Y”时不能填）
+    public $certificateNo;//证件号码（一票多客入园标志为“Y”时不能填）
+    public $touristPhone;//持票人手机号码（一票多客入园标志为“Y”时不能填）
 
     /**
      * 持票人姓名
