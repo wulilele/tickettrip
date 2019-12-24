@@ -81,9 +81,15 @@ class Lite
      * 验签
      * @param array $params 请求参数
      * @param string $key 密钥
+     * @return bool
      */
     public function verifySign($params, $key){
-
+        $str = $this->createLinkString($this->paraFilter($params));
+        $str = md5(Config::$KEY . $str);
+        if(isset($params['sign']) && $params['sign'] == $str){
+            return true;
+        }
+        return false;
     }
 
     /**
