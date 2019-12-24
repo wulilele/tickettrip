@@ -14,6 +14,8 @@ class TicketBase
 {
     public static $path = "";//接口相对路径
 
+    public $_error = ""; //错误信息
+
     /**
      * @var array 参数数组
      * 以下为公共参数,会自动调取，不用传值
@@ -37,6 +39,13 @@ class TicketBase
     public function getValues()
     {
         return $this->values;
+    }
+
+    /**
+     * 参数合法性检查
+     */
+    public function check(){
+        return true;
     }
 
 }

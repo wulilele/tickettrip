@@ -45,10 +45,17 @@ class Lite
      * 云平台接口请求统一方法
      * @param $object TicketBase 参数对象
      * @return array
+     * @throws Exception
      */
     public function request($object){
-        $url = Config::$APIURL . $object::$path;
-        $data = $object->getValues();
+        //增加参数检查
+        if(!$object->check()){
+            throw new Exception($object->_error);   //抛出异常错误信息
+        }
+
+        $url = Config::$APIURL . $object::$path;//接口完整路径
+        $data = $object->getValues();//请求参数
+
         //加签
         $data['sign'] = $this->createSign($data,Config::$KEY);
         $ch = curl_init();
