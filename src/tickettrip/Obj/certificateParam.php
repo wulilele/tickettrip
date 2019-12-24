@@ -4,7 +4,7 @@
 namespace wulilele\tickettrip\Obj;
 
 /**
- * 实名制信息
+ * 实名制信息，为SaveOrder的一部分
  * @package wulilele\tickettrip\Obj
  */
 class certificateParam

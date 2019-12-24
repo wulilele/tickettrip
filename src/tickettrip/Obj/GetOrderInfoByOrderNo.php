@@ -3,7 +3,10 @@
 
 namespace wulilele\tickettrip\Obj;
 
-
+/**
+ * 查询订单
+ * @package wulilele\tickettrip\Obj
+ */
 class GetOrderInfoByOrderNo extends TicketBase
 {
 

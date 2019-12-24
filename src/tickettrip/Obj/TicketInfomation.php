@@ -3,7 +3,10 @@
 
 namespace wulilele\tickettrip\Obj;
 
-
+/**
+ * 购票信息，为SaveOrder的一部分
+ * @package wulilele\tickettrip\Obj
+ */
 class TicketInfomation
 {
 
