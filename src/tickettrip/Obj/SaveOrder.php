@@ -78,11 +78,11 @@ class SaveOrder extends TicketBase
     }
 
     /**
-     * @param $third_tid string 第三方订单号
+     * @param $child_tid string 订单号
      * @require true
      */
-    public function setThirdSideOrigiOrderNo($third_tid){
-        $this->values['thirdSideOrigiOrderNo'] = $third_tid;
+    public function setThirdSideOrigiOrderNo($child_tid){
+        $this->values['thirdSideOrigiOrderNo'] = $child_tid;
     }
 
     /**
