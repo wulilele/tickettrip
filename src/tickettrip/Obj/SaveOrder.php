@@ -91,7 +91,7 @@ class SaveOrder extends TicketBase
      * @param array $array
      */
     public function setTicketInfomationList($array = array()){
-        $this->values["ticketInfomationList"] = json_encode($array);
+        $this->values["ticketInfomationList"] = $array;
     }
 
 

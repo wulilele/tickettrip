@@ -57,7 +57,8 @@ class Lite
         $data = $object->getValues();//请求参数
 
         //加签
-        $data['sign'] = $this->createSign($data,Config::$KEY);
+        $param['sign'] = $this->createSign($data,Config::$KEY);
+        $param['data'] = json_encode($data);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
@@ -70,7 +71,7 @@ class Lite
         }
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS,$data);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,$param);
         $response = curl_exec($ch);
         curl_close($ch);
         return  $response;
